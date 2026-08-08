@@ -593,9 +593,7 @@ The simulated curves closely overlap the analytical solution, showing that Gille
 
 ```mermaid
 flowchart LR
-
     A["Define transition rates α and β"] --> B["Construct generator matrix W"]
-
     B --> C["Analytical model"]
     B --> D["Gillespie simulation"]
 
@@ -609,7 +607,6 @@ flowchart LR
 
     G --> K["Compare theory and simulation"]
     J --> K
-
     K --> L["Verify convergence to equilibrium"]
 ```
 
