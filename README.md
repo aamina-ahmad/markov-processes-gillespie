@@ -10,29 +10,15 @@ The project combines an analytical treatment of the Markov process with a stocha
 
 The system has two states with transition rates
 
-$$
-W(1 \to 2)=\alpha,
-\qquad
-W(2 \to 1)=\beta
-$$
+$$W(1 \to 2)=\alpha, \qquad W(2 \to 1)=\beta$$
 
 where
 
-$$
-\alpha>0,
-\qquad
-\beta>0
-$$
+$$\alpha>0, \qquad \beta>0$$
 
 The state-probability vector is
 
-$$
-p(t)=
-\begin{pmatrix}
-p_1(t) \\
-p_2(t)
-\end{pmatrix}
-$$
+$$p(t)=\begin{pmatrix} p_1(t) \\ p_2(t) \end{pmatrix}$$
 
 The aim is to understand how the probabilities evolve with time, determine the stationary distribution, analyse convergence to equilibrium, and verify the theory using Gillespie simulation.
 
@@ -42,37 +28,19 @@ The aim is to understand how the probabilities evolve with time, determine the s
 
 For state 1,
 
-$$
-\frac{dp_1}{dt}
-=
-\beta p_2-\alpha p_1
-$$
+$$\frac{dp_1}{dt} = \beta p_2-\alpha p_1$$
 
 For state 2,
 
-$$
-\frac{dp_2}{dt}
-=
-\alpha p_1-\beta p_2
-$$
+$$\frac{dp_2}{dt} = \alpha p_1-\beta p_2$$
 
 The system can therefore be written as
 
-$$
-\frac{dp}{dt}
-=
-Wp(t)
-$$
+$$\frac{dp}{dt} = Wp(t)$$
 
 with generator matrix
 
-$$
-W=
-\begin{pmatrix}
--\alpha & \beta \\
-\alpha & -\beta
-\end{pmatrix}
-$$
+$$W=\begin{pmatrix} -\alpha & \beta \\ \alpha & -\beta \end{pmatrix}$$
 
 The generator has several important properties:
 
@@ -87,20 +55,11 @@ The generator has several important properties:
 
 Since the columns of $W$ sum to zero,
 
-$$
-\frac{d}{dt}
-\left(
-p_1(t)+p_2(t)
-\right)
-=
-0
-$$
+$$\frac{d}{dt}\left( p_1(t)+p_2(t) \right) = 0$$
 
 Therefore,
 
-$$
-p_1(t)+p_2(t)=1
-$$
+$$p_1(t)+p_2(t)=1$$
 
 for all $t$, provided the initial distribution is normalised.
 
@@ -110,31 +69,19 @@ for all $t$, provided the initial distribution is normalised.
 
 The characteristic equation is
 
-$$
-\det(W-\lambda I)=0
-$$
+$$\det(W-\lambda I)=0$$
 
 For this generator,
 
-$$
-\det(W-\lambda I)
-=
-\lambda(\lambda+\alpha+\beta)
-$$
+$$\det(W-\lambda I) = \lambda(\lambda+\alpha+\beta)$$
 
 so the eigenvalues are
 
-$$
-\lambda_1=0,
-\qquad
-\lambda_2=-(\alpha+\beta)
-$$
+$$\lambda_1=0, \qquad \lambda_2=-(\alpha+\beta)$$
 
 Since $\alpha,\beta>0$,
 
-$$
-\lambda_2<0
-$$
+$$\lambda_2<0$$
 
 The zero eigenvalue corresponds to the stationary state, while the negative eigenvalue governs relaxation toward equilibrium.
 
@@ -144,65 +91,35 @@ The zero eigenvalue corresponds to the stationary state, while the negative eige
 
 The stationary distribution $\pi$ satisfies
 
-$$
-W\pi=0
-$$
+$$W\pi=0$$
 
 where
 
-$$
-\pi=
-\begin{pmatrix}
-\pi_1 \\
-\pi_2
-\end{pmatrix}
-$$
+$$\pi=\begin{pmatrix} \pi_1 \\ \pi_2 \end{pmatrix}$$
 
 together with
 
-$$
-\pi_1+\pi_2=1
-$$
+$$\pi_1+\pi_2=1$$
 
 Solving
 
-$$
--\alpha\pi_1+\beta\pi_2=0
-$$
+$$-\alpha\pi_1+\beta\pi_2=0$$
 
 gives
 
-$$
-\pi_2
-=
-\frac{\alpha}{\beta}\pi_1
-$$
+$$\pi_2 = \frac{\alpha}{\beta}\pi_1$$
 
 and therefore
 
-$$
-\pi_1
-=
-\frac{\beta}{\alpha+\beta}
-$$
+$$\pi_1 = \frac{\beta}{\alpha+\beta}$$
 
 and
 
-$$
-\pi_2
-=
-\frac{\alpha}{\alpha+\beta}
-$$
+$$\pi_2 = \frac{\alpha}{\alpha+\beta}$$
 
 Hence
 
-$$
-\pi=
-\begin{pmatrix}
-\dfrac{\beta}{\alpha+\beta} \\
-\dfrac{\alpha}{\alpha+\beta}
-\end{pmatrix}
-$$
+$$\pi=\begin{pmatrix} \dfrac{\beta}{\alpha+\beta} \\ \dfrac{\alpha}{\alpha+\beta} \end{pmatrix}$$
 
 ---
 
@@ -210,41 +127,19 @@ $$
 
 The simulation uses
 
-$$
-\alpha=0.3,
-\qquad
-\beta=0.5
-$$
+$$\alpha=0.3, \qquad \beta=0.5$$
 
 Therefore,
 
-$$
-\pi_1
-=
-\frac{0.5}{0.3+0.5}
-=
-0.625
-$$
+$$\pi_1 = \frac{0.5}{0.3+0.5} = 0.625$$
 
 and
 
-$$
-\pi_2
-=
-\frac{0.3}{0.3+0.5}
-=
-0.375
-$$
+$$\pi_2 = \frac{0.3}{0.3+0.5} = 0.375$$
 
 so
 
-$$
-\pi=
-\begin{pmatrix}
-0.625 \\
-0.375
-\end{pmatrix}
-$$
+$$\pi=\begin{pmatrix} 0.625 \\ 0.375 \end{pmatrix}$$
 
 ---
 
@@ -252,43 +147,25 @@ $$
 
 For the zero eigenvalue,
 
-$$
-\lambda_1=0
-$$
+$$\lambda_1=0$$
 
 the right eigenvector is the stationary distribution
 
-$$
-v_1=
-\begin{pmatrix}
-\pi_1 \\
-\pi_2
-\end{pmatrix}
-$$
+$$v_1=\begin{pmatrix} \pi_1 \\ \pi_2 \end{pmatrix}$$
 
 The corresponding left eigenvector is
 
-$$
-u^T=(1,1)
-$$
+$$u^T=(1,1)$$
 
 which reflects conservation of total probability.
 
 For
 
-$$
-\lambda_2=-(\alpha+\beta)
-$$
+$$\lambda_2=-(\alpha+\beta)$$
 
 a corresponding right eigenvector is
 
-$$
-v_2=
-\begin{pmatrix}
--1 \\
-1
-\end{pmatrix}
-$$
+$$v_2=\begin{pmatrix} -1 \\ 1 \end{pmatrix}$$
 
 ---
 
@@ -296,33 +173,19 @@ $$
 
 Detailed balance requires
 
-$$
-\pi_1W(1\to2)
-=
-\pi_2W(2\to1)
-$$
+$$\pi_1W(1\to2) = \pi_2W(2\to1)$$
 
 Using the transition rates,
 
-$$
-\pi_1\alpha
-=
-\pi_2\beta
-$$
+$$\pi_1\alpha = \pi_2\beta$$
 
 Substituting the stationary probabilities gives
 
-$$
-\frac{\beta}{\alpha+\beta}\alpha
-=
-\frac{\alpha}{\alpha+\beta}\beta
-$$
+$$\frac{\beta}{\alpha+\beta}\alpha = \frac{\alpha}{\alpha+\beta}\beta$$
 
 Both sides are equal to
 
-$$
-\frac{\alpha\beta}{\alpha+\beta}
-$$
+$$\frac{\alpha\beta}{\alpha+\beta}$$
 
 so the process satisfies detailed balance.
 
@@ -332,76 +195,35 @@ so the process satisfies detailed balance.
 
 The Kullback-Leibler divergence between $p(t)$ and the stationary distribution $\pi$ is
 
-$$
-D(p(t)\|\pi)
-=
-\sum_{n=1}^{2}
-p_n(t)
-\log
-\left(
-\frac{p_n(t)}{\pi_n}
-\right)
-$$
+$$D(p(t)\|\pi) = \sum_{n=1}^{2} p_n(t) \log\left( \frac{p_n(t)}{\pi_n} \right)$$
 
 For the two-state model,
 
-$$
-D(p(t)\|\pi)
-=
-p_1(t)
-\log
-\left(
-\frac{p_1(t)}{\pi_1}
-\right)
-+
-p_2(t)
-\log
-\left(
-\frac{p_2(t)}{\pi_2}
-\right)
-$$
+$$D(p(t)\|\pi) = p_1(t) \log\left( \frac{p_1(t)}{\pi_1} \right) + p_2(t) \log\left( \frac{p_2(t)}{\pi_2} \right)$$
 
 Using the master equations and detailed balance,
 
-$$
-\frac{d}{dt}D(p(t)\|\pi)
-=
--
-(p_1\alpha-p_2\beta)
-\log
-\left(
-\frac{p_1\alpha}{p_2\beta}
-\right)
-$$
+$$\frac{d}{dt}D(p(t)\|\pi) = -(p_1\alpha-p_2\beta) \log\left( \frac{p_1\alpha}{p_2\beta} \right)$$
 
 Using
 
-$$
-(e^x-e^y)(x-y)\ge0
-$$
+$$(e^x-e^y)(x-y)\ge0$$
 
 gives
 
-$$
-\frac{d}{dt}D(p(t)\|\pi)
-\le0
-$$
+$$\frac{d}{dt}D(p(t)\|\pi) \le0$$
 
 Therefore, the KL divergence is non-increasing and acts as a Lyapunov function.
 
 Equality occurs only when
 
-$$
-p_1\alpha=p_2\beta
-$$
+$$p_1\alpha=p_2\beta$$
 
 which is the stationary condition.
 
 Hence,
 
-$$
-\lim_{t\to\infty}p(t)=\pi
-$$
+$$\lim_{t\to\infty}p(t)=\pi$$
 
 ---
 
@@ -409,19 +231,11 @@ $$
 
 The generator can be transformed into the symmetric matrix
 
-$$
-M=
-\begin{pmatrix}
--\alpha & \sqrt{\alpha\beta} \\
-\sqrt{\alpha\beta} & -\beta
-\end{pmatrix}
-$$
+$$M=\begin{pmatrix} -\alpha & \sqrt{\alpha\beta} \\ \sqrt{\alpha\beta} & -\beta \end{pmatrix}$$
 
 through the similarity transform
 
-$$
-M=D^{-1}WD
-$$
+$$M=D^{-1}WD$$
 
 where $D$ is diagonal with entries related to the square roots of the stationary probabilities.
 
@@ -429,17 +243,11 @@ Since $M$ is real and symmetric, it is diagonalisable by the spectral theorem.
 
 Defining
 
-$$
-q(t)=D^{-1}p(t)
-$$
+$$q(t)=D^{-1}p(t)$$
 
 gives
 
-$$
-\frac{dq}{dt}
-=
-Mq(t)
-$$
+$$\frac{dq}{dt} = Mq(t)$$
 
 ---
 
@@ -447,42 +255,19 @@ $$
 
 The full solution is
 
-$$
-p_1(t)
-=
-\pi_1+
-\left(
-p_1(0)-\pi_1
-\right)
-e^{-(\alpha+\beta)t}
-$$
+$$p_1(t) = \pi_1+\left( p_1(0)-\pi_1 \right)e^{-(\alpha+\beta)t}$$
 
 and
 
-$$
-p_2(t)
-=
-\pi_2+
-\left(
-p_2(0)-\pi_2
-\right)
-e^{-(\alpha+\beta)t}
-$$
+$$p_2(t) = \pi_2+\left( p_2(0)-\pi_2 \right)e^{-(\alpha+\beta)t}$$
 
 The transient term decays exponentially at rate
 
-$$
-\alpha+\beta
-$$
+$$\alpha+\beta$$
 
 so
 
-$$
-p(t)\to\pi
-\qquad
-\text{as }
-t\to\infty
-$$
+$$p(t)\to\pi \qquad \text{as } t\to\infty$$
 
 ---
 
@@ -490,29 +275,15 @@ $$
 
 The non-zero eigenvalue is
 
-$$
-\lambda_2=-(\alpha+\beta)
-$$
+$$\lambda_2=-(\alpha+\beta)$$
 
 Therefore, the characteristic relaxation time is
 
-$$
-\tau_{\mathrm{relax}}
-=
-\frac{1}{|\lambda_2|}
-=
-\frac{1}{\alpha+\beta}
-$$
+$$\tau_{\mathrm{relax}} = \frac{1}{|\lambda_2|} = \frac{1}{\alpha+\beta}$$
 
 For the simulation parameters,
 
-$$
-\tau_{\mathrm{relax}}
-=
-\frac{1}{0.3+0.5}
-=
-1.25
-$$
+$$\tau_{\mathrm{relax}} = \frac{1}{0.3+0.5} = 1.25$$
 
 Larger transition rates therefore lead to faster convergence toward equilibrium.
 
@@ -555,35 +326,15 @@ The probabilities $p_1(t)$ and $p_2(t)$ are estimated by averaging over 10,000 i
 
 For
 
-$$
-\alpha=0.3,
-\qquad
-\beta=0.5
-$$
+$$\alpha=0.3, \qquad \beta=0.5$$
 
 the analytical stationary probabilities are
 
-$$
-\pi_1=0.6250
-$$
-
-and
-
-$$
-\pi_2=0.3750
-$$
+$$\pi_1=0.6250 \qquad \text{and} \qquad \pi_2=0.3750$$
 
 The submitted Gillespie experiment produced simulated stationary values of approximately
 
-$$
-p_1=0.6247
-$$
-
-and
-
-$$
-p_2=0.3753
-$$
+$$p_1=0.6247 \qquad \text{and} \qquad p_2=0.3753$$
 
 The simulated curves closely overlap the analytical solution, showing that Gillespie simulation accurately reproduces the theoretical probability dynamics.
 
